@@ -32,4 +32,9 @@ public class RPNCalculatorTest {
   public void should_calculate_7_when_subtracting_3_to_10() throws Exception {
     assertThat(calculator.calculate("10 3 -")).isEqualTo(7);
   }
+
+  @Test
+  public void should_calculate_8_when_multiplying_4_by_2() throws Exception {
+    assertThat(calculator.calculate("4 2 *")).isEqualTo(8);
+  }
 }

@@ -13,6 +13,8 @@ public class RPNCalculator implements Calculator {
           return Integer.valueOf(operationElements.get(0)) + Integer.valueOf(operationElements.get(1));
         case "-":
           return Integer.valueOf(operationElements.get(0)) - Integer.valueOf(operationElements.get(1));
+        case "*":
+          return Integer.valueOf(operationElements.get(0)) * Integer.valueOf(operationElements.get(1));
         case "/":
           return Integer.valueOf(operationElements.get(0)) / Integer.valueOf(operationElements.get(1));
       }
