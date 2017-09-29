@@ -27,4 +27,9 @@ public class RPNCalculatorTest {
   public void should_calculate_3_when_dividing_6_by_2() throws Exception {
     assertThat(calculator.calculate("6 2 /")).isEqualTo(3);
   }
+
+  @Test
+  public void should_calculate_7_when_subtracting_3_to_10() throws Exception {
+    assertThat(calculator.calculate("10 3 -")).isEqualTo(7);
+  }
 }
