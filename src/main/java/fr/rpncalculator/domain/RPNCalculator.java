@@ -8,16 +8,7 @@ public class RPNCalculator implements Calculator {
   public int calculate(String operation) {
     List<String> operationElements = Arrays.asList(operation.split(" "));
     if (operationElements.size() > 1) {
-      switch (operationElements.get(2)) {
-        case "+":
-          return Integer.valueOf(operationElements.get(0)) + Integer.valueOf(operationElements.get(1));
-        case "-":
-          return Integer.valueOf(operationElements.get(0)) - Integer.valueOf(operationElements.get(1));
-        case "*":
-          return Integer.valueOf(operationElements.get(0)) * Integer.valueOf(operationElements.get(1));
-        case "/":
-          return Integer.valueOf(operationElements.get(0)) / Integer.valueOf(operationElements.get(1));
-      }
+      return Operand.findByOperator(operationElements.get(2)).calculate(Integer.valueOf(operationElements.get(0)), Integer.valueOf(operationElements.get(1)));
     }
     return Integer.valueOf(operation);
   }
