@@ -1,4 +1,4 @@
-# Kata RON calculator
+# Kata RPN calculator
 Kata de calculatrice en reverse polish notation
 
 1 seule contrainte: le faire en TDD
