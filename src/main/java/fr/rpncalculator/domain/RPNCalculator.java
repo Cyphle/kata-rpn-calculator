@@ -7,8 +7,14 @@ public class RPNCalculator implements Calculator {
   @Override
   public int calculate(String operation) {
     List<String> operationElements = Arrays.asList(operation.split(" "));
-    if (operationElements.size() > 1)
-      return Integer.valueOf(operationElements.get(0)) + Integer.valueOf(operationElements.get(1));
+    if (operationElements.size() > 1) {
+      switch (operationElements.get(2)) {
+        case "+":
+          return Integer.valueOf(operationElements.get(0)) + Integer.valueOf(operationElements.get(1));
+        case "/":
+          return Integer.valueOf(operationElements.get(0)) / Integer.valueOf(operationElements.get(1));
+      }
+    }
     return Integer.valueOf(operation);
   }
 }

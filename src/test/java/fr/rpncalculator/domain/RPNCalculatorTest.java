@@ -22,4 +22,9 @@ public class RPNCalculatorTest {
   public void should_calculate_8_when_adding_3_and_5() throws Exception {
     assertThat(calculator.calculate("3 5 +")).isEqualTo(8);
   }
+
+  @Test
+  public void should_calculate_3_when_dividing_6_by_2() throws Exception {
+    assertThat(calculator.calculate("6 2 /")).isEqualTo(3);
+  }
 }
