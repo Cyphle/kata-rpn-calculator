@@ -9,15 +9,15 @@ import java.util.function.BinaryOperator;
 public class Number {
   private BigDecimal value;
 
-  public Number(double value) {
+  Number(double value) {
     this.value = new BigDecimal(value, MathContext.DECIMAL64);
   }
 
-  public Number(String value) {
+  Number(String value) {
     this.value = new BigDecimal(Double.valueOf(value), MathContext.DECIMAL64);
   }
 
-  public Number(BigDecimal value) {
+  private Number(BigDecimal value) {
     this.value = value;
   }
 
@@ -58,8 +58,7 @@ public class Number {
     }
 
     public Number calculate(Number firstMember, Number secondMember) {
-      Number apply = operation.apply(firstMember, secondMember);
-      return apply;
+      return operation.apply(firstMember, secondMember);
     }
 
     public static Optional<Operation> findByOperator(String operator) {
