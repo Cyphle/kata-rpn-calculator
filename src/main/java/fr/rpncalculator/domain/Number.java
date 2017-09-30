@@ -46,8 +46,8 @@ public class Number {
   enum Operation {
     PLUS("+", (a, b) -> new Number(a.value.add(b.value))),
     MINUS("-", (a, b) -> new Number(a.value.subtract(b.value))),
-    DIVIDE("/", (a, b) -> new Number(a.value.divide(b.value, BigDecimal.ROUND_FLOOR))),
-    MULTIPLY("*", (a, b) -> new Number(a.value.multiply(b.value)));
+    DIVIDE("/", (a, b) -> new Number(a.value.divide(b.value))),
+    MULTIPLY("x", (a, b) -> new Number(a.value.multiply(b.value)));
 
     final String operator;
     final BinaryOperator<Number> operation;

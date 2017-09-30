@@ -1,10 +1,14 @@
 package fr.rpncalculator.domain;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(JUnitParamsRunner.class)
 public class RPNCalculatorTest {
   private Calculator calculator;
 
@@ -35,6 +39,21 @@ public class RPNCalculatorTest {
 
   @Test
   public void should_calculate_8_when_multiplying_4_by_2() throws Exception {
-    assertThat(calculator.calculate("4 2 *")).isEqualTo(new Number(8));
+    assertThat(calculator.calculate("4 2 x")).isEqualTo(new Number(8));
+  }
+
+  private Object[] parametersForShould_calculate_rpn_operation() {
+    return new Object[][]{
+            {"3 5 8 x 7 + x", new Number(141)},
+            {"3 4 2 1 + x + 2 /", new Number(7.5)},
+            {"1 2 + 4 x 5 + 3 -", new Number(14)},
+            {"5 4 1 2 + x +", new Number(17)}
+    };
+  }
+
+  @Test
+  @Parameters
+  public void should_calculate_rpn_operation(final String operation, final Number result) throws Exception {
+    assertThat(calculator.calculate(operation)).isEqualTo(result);
   }
 }
