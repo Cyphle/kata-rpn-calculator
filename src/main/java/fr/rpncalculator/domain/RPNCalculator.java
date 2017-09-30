@@ -1,32 +1,35 @@
 package fr.rpncalculator.domain;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 import java.util.Stack;
 
 public class RPNCalculator implements Calculator {
-  @Override
-  public int calculate(String operation) {
-    Stack<String> operationElements = new Stack<>();
-    operationElements.addAll(Arrays.asList(operation.split(" ")));
+  private static final String SEPARATOR = " ";
+  private final Stack<Number> operationMembers;
 
-    if (operationElements.size() > 1) {
-      OperationResult result = new OperationResult(0);
-      return parseOperation(result, operationElements).getResult();
-    }
-    return Integer.valueOf(operation);
+  public RPNCalculator() {
+    this.operationMembers = new Stack<>();
   }
 
-  private OperationResult parseOperation(OperationResult result, List<String> operationElements) {
-    Operand.findByOperator(operationElements.get(2))
-            .ifPresent(operand -> result.accumulate(
-                    new OperationResult(
-                            operand.calculate(
-                                    Integer.valueOf(operationElements.get(0)),
-                                    Integer.valueOf(operationElements.get(1))
-                            )
-                    )
-            ));
-    return result;
+  @Override
+  public Number calculate(String operation) {
+    for (String element : Arrays.asList(operation.split(SEPARATOR))) {
+      evaluateElement(element);
+    }
+
+    return operationMembers.pop();
+  }
+
+  private void evaluateElement(String element) {
+    Optional<Number.Operation> operation = Number.Operation.findByOperator(element);
+
+    if (operation.isPresent()) {
+      Number secondMember = operationMembers.pop();
+      Number firstMember = operationMembers.pop();
+      operationMembers.push(operation.get().calculate(firstMember, secondMember));
+    } else {
+      operationMembers.push(new Number(element));
+    }
   }
 }

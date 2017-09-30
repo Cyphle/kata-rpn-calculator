@@ -15,26 +15,26 @@ public class RPNCalculatorTest {
 
   @Test
   public void should_return_same_value_if_there_is_only_one() throws Exception {
-    assertThat(calculator.calculate("3")).isEqualTo(3);
+    assertThat(calculator.calculate("3")).isEqualTo(new Number(3));
   }
 
   @Test
   public void should_calculate_8_when_adding_3_and_5() throws Exception {
-    assertThat(calculator.calculate("3 5 +")).isEqualTo(8);
+    assertThat(calculator.calculate("3 5 +")).isEqualTo(new Number(8));
   }
 
   @Test
   public void should_calculate_3_when_dividing_6_by_2() throws Exception {
-    assertThat(calculator.calculate("6 2 /")).isEqualTo(3);
+    assertThat(calculator.calculate("6 2 /")).isEqualTo(new Number(3));
   }
 
   @Test
   public void should_calculate_7_when_subtracting_3_to_10() throws Exception {
-    assertThat(calculator.calculate("10 3 -")).isEqualTo(7);
+    assertThat(calculator.calculate("10 3 -")).isEqualTo(new Number(7));
   }
 
   @Test
   public void should_calculate_8_when_multiplying_4_by_2() throws Exception {
-    assertThat(calculator.calculate("4 2 *")).isEqualTo(8);
+    assertThat(calculator.calculate("4 2 *")).isEqualTo(new Number(8));
   }
 }

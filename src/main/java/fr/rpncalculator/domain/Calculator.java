@@ -1,5 +1,5 @@
 package fr.rpncalculator.domain;
 
 public interface Calculator {
-  int calculate(String operation);
+  Number calculate(String operation);
 }
