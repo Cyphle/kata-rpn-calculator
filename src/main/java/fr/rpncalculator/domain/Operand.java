@@ -1,6 +1,7 @@
 package fr.rpncalculator.domain;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 
 enum Operand {
@@ -21,7 +22,7 @@ enum Operand {
     return operation.apply(first, second);
   }
 
-  public static Operand findByOperator(String operator) {
-    return Arrays.stream(Operand.values()).filter(operand -> operand.operator.equals(operator)).findAny().orElse(PLUS);
+  public static Optional<Operand> findByOperator(String operator) {
+    return Arrays.stream(Operand.values()).filter(operand -> operand.operator.equals(operator)).findAny();
   }
 }
